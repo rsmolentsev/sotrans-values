@@ -1,0 +1,26 @@
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "cf-dns-cert-issuer"
+  hosts:
+    - host: keycloak.sotransit.ru
+      paths:
+        - /
+  tls:
+    - secretName: keycloak-tls
+      hosts:
+        - keycloak.sotransit.ru
+
+
+keycloak:
+  replicas: 1
+
+  service:
+    type: ClusterIP
+
+  postgresql:
+    enabled: true
+    postgresqlUsername: keycloak
+    postgresqlPassword: keycloak
+    postgresqlDatabase: keycloak
