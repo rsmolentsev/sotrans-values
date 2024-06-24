@@ -8,9 +8,8 @@ ingress:
       paths:
         - /
   tls:
-    - secretName: keycloak-tls
-      hosts:
-        - keycloak.sotransit.ru
+    - hosts:
+      - keycloak.sotransit.ru
 
 
 keycloak:
